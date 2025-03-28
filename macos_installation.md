@@ -1,6 +1,7 @@
 Installation and Debugging Report for EDA Tools on macOS
 
-Author: Yeshwanth Reddy KattaTarget OS: macOS (Apple Silicon)
+Author: Yeshwanth Reddy Katta Target OS: macOS (Apple Silicon)
+
 1. Initial Installation Script Creation
 
 A shell script named install_edatools.sh was created to automate the installation of dependencies:
@@ -49,6 +50,7 @@ install_python_deps() {
 }
 
 Yosys Build Process:
+
 Initial Error:
 fatal error: 'map' file not found (This indicated missing C++ standard headers)
 1. Initial Setup & Prerequisites
