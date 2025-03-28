@@ -33,7 +33,7 @@ pip install pynput openai
 
 4. Updated Python Dependency Script
 
-# Function to install Python dependencies
+## Function to install Python dependencies
 install_python_deps() {
     echo "🐍 Checking if inside virtual environment..."
 
@@ -97,12 +97,13 @@ cd yosys
 
 Initialize submodules:
 
+```bash
 git submodule update --init --recursive
 
 Clean old builds:
 
 gmake clean
-
+```
 Edit Makefile.conf:
 
 CONFIG := clang
