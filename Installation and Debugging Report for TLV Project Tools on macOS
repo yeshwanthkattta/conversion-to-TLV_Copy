@@ -29,6 +29,7 @@ python3 -m venv ~/.venv_edatools
 source ~/.venv_edatools/bin/activate
 pip install --upgrade pip
 pip install pynput openai
+
 4. Updated Python Dependency Script
 
 # Function to install Python dependencies
@@ -46,6 +47,7 @@ install_python_deps() {
         echo "✅ Dependencies already installed"
     fi
 }
+
 Yosys Build Process:
 Initial Error:
 fatal error: 'map' file not found (This indicated missing C++ standard headers)
@@ -58,6 +60,7 @@ brew install bison flex readline gawk libffi graphviz pkg-config python@3.11 boo
 
 Required tools: GNU Flex, Bison, Make, Python, and optional tools like readline, libffi, Tcl, zlib, Graphviz, and Xdot.
 (Not able to build using homebrew) so tried with Macports
+
 2. MacPorts & Compiler Configuration
 
 MacPorts installation check:
@@ -81,6 +84,7 @@ Add the above to ~/.zshrc, save, and run source ~/.zshrc
 Verify Clang version:
 which clang-16
 clang-16 --version
+
 4. Yosys Build Configuration
 
 Clone Yosys:
@@ -109,8 +113,6 @@ Final Build Commands:
 
 gmake config-clang
 gmake -j$(sysctl -n hw.logicalcpu)
-
-✅ Yosys built successfully with MacPorts clang-16.
-
+ Yosys built successfully with MacPorts clang-16.
 
 
