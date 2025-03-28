@@ -2,7 +2,7 @@ Installation and Debugging Report for EDA Tools on macOS
 
 Author: Yeshwanth Reddy Katta Target OS: macOS (Apple Silicon)
 
-1. Initial Installation Script Creation
+ # 1. Initial Installation Script Creation
 
 A shell script named install_edatools.sh was created to automate the installation of dependencies:
 
@@ -49,7 +49,7 @@ install_python_deps() {
     fi
 }
 
-Yosys Build Process:
+ # Yosys Build Process:
 
 Initial Error:
 fatal error: 'map' file not found (This indicated missing C++ standard headers)
@@ -68,7 +68,8 @@ Required tools: GNU Flex, Bison, Make, Python, and optional tools like readline,
 MacPorts installation check:
 
 port version
-# Output: Version: 2.8.1
+
+ Output: Version: 2.8.1
 
 Install MacPorts from: https://www.macports.org/install.php
 
