@@ -166,12 +166,17 @@ gmake clean
 Edit Makefile.conf
 ```bash
 
+
 CONFIG := clang
 CXX := /opt/local/bin/clang++-mp-16
 CC := /opt/local/bin/clang-mp-16
-LDLIBS += -ltcl
-ENABLE_ZLIB := 0
+CXXFLAGS += -I/opt/local/include
+LINKFLAGS += -L/opt/local/lib
+LIBS += -ltcl -ltommath -lz
 ENABLE_TCL := 1
+ENABLE_ZLIB := 1
+
+
 ```
 Adjust paths and flags as needed if your setup differs.
 
@@ -186,6 +191,121 @@ or
 gmake
 ```
 After the build completes successfully, you should have a working yosys binary.
+Steps to Install and Test sby and eqy on macOS
+*** 1. Install SymbiYosys (sby)**8
+  SymbiYosys is a wrapper around Yosys, smtbmc, and model checkers like Yices/Z3.
+a. Clone SymbiYosys:
+```bash
+sudo port install z3
+git clone https://github.com/YosysHQ/sby.git
+cd sby
+```
+b. Install it locally:
+```bash
+sudo make
+```
+C.Check installation:
+```bash
+sby --version
+```
+1: Add Yosys to your PATH
+If Yosys is  locally, so its binary is probably located in the yosys folder. Let’s add that directory to your PATH so you can call yosys from anywhere.
+```bash
+nano ~/.zshrc
+```
+ add the below line at end of the script
+ ```bash
+export PATH="$HOME/yosys:$PATH"
+```
+ Save and apply
+ ```bash
+source ~/.zshrc
+```
+
+Testing SymbiYosys using a basic design
+Create a new folder (optional but recommended):
+```bash
+mkdir -p ~/SymbiYosys/my_project
+cd ~/SymbiYosys/my_project
+```
+Create and save my_design.v:
+```bash
+nano my_counter.v
+```
+
+Paste the below code:(save and exit (Ctrl+O, Enter, then Ctrl+X).)
+```bash
+module top(input clk, input rst, output reg [3:0] counter);
+
+    always @(posedge clk) begin
+        if (rst)
+            counter <= 0;
+        else
+            counter <= counter + 1;
+    end
+
+    // Simple assertion: counter should never overflow (not realistic, just for demo)
+    always @(posedge clk)
+        if (counter == 4'b1111)
+            assert(0);
+
+endmodule
+```
+
+Create and save my_counter.sby:
+```bash
+nano my_counter.sby
+```
+Paste this config:
+```bash
+[options]
+mode bmc
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal my_counter.v
+prep -top top
+
+[files]
+my_counter.v
+```
+Run SymbiYosys:
+```bash
+sby -f my_design.sby
+```
+You will get a message at end :
+failed assertion top._witness_.check_assert_my_design_v_13_5 at my_design.v:13.13-13.22
+
+This means:
+
+There is an assertion at line 13 of our Verilog file
+
+Steps to install EQY:
+. Clone the EQY repository
+
+```bash
+xgit clone https://github.com/YosysHQ/eqy.git
+cd eqy
+```
+Build and and install 
+
+add this at top of the Make file:
+```bash
+YOSYS_SRC := /Users/yeshwanthreddykatta/yosys
+
+CXX := clang++
+CXXFLAGS := -fPIC -std=c++17 -Wall -I$(YOSYS_SRC) -I$(YOSYS_SRC)/kernel \
+  -DYOSYS_NAMESPACE_BEGIN="namespace Yosys {" \
+  -DYOSYS_NAMESPACE_END="}"
+```
+ Build and install :
+ ```bash
+make
+sudo make install
+```
 
 Final Notes
 Using MacPorts for dependencies and clang-16 proved more reliable on Apple Silicon.
