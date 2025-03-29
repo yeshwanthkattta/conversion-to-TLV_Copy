@@ -11,7 +11,7 @@ Target OS: **macOS (Apple Silicon)**
 2. [Homebrew Dependency Installation](#homebrew-dependency-installation)  
 3. [Handling Python (PEP 668 Restriction)](#handling-python-pep-668-restriction)  
 4. [Updated Python Dependency Script](#updated-python-dependency-script)  
-5. [Yosys Build Process](#yosys-build-process)  
+5. [Yosys, SymbiYosysand EQY Build Process](#yosys-build-process)  
 
 ---
 
@@ -192,7 +192,7 @@ gmake
 ```
 After the build completes successfully, you should have a working yosys binary.
 Steps to Install and Test sby and eqy on macOS
-*** 1. Install SymbiYosys (sby)**8
+***1. Install SymbiYosys (sby)***
   SymbiYosys is a wrapper around Yosys, smtbmc, and model checkers like Yices/Z3.
 a. Clone SymbiYosys:
 ```bash
@@ -283,11 +283,11 @@ This means:
 
 There is an assertion at line 13 of our Verilog file
 
-Steps to install EQY:
+***Steps to install EQY:***
 . Clone the EQY repository
 
 ```bash
-xgit clone https://github.com/YosysHQ/eqy.git
+git clone https://github.com/YosysHQ/eqy.git
 cd eqy
 ```
 Build and and install 
