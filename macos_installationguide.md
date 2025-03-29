@@ -192,7 +192,8 @@ gmake
 ```
 After the build completes successfully, you should have a working yosys binary.
 Steps to Install and Test sby and eqy on macOS
-***1. Install SymbiYosys (sby)***
+
+## 1. Install SymbiYosys (sby)
   SymbiYosys is a wrapper around Yosys, smtbmc, and model checkers like Yices/Z3.
 a. Clone SymbiYosys:
 ```bash
@@ -283,7 +284,7 @@ This means:
 
 There is an assertion at line 13 of our Verilog file
 
-***Steps to install EQY:***
+## Steps to install EQY:
 . Clone the EQY repository
 
 ```bash
