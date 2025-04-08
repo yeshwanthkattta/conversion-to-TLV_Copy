@@ -1,0 +1,46 @@
+# 🛠️ Verilog to TL-Verilog Manual Refactoring Examples (Pen & Paper Conversion)
+
+This repository contains manually converted TL-Verilog versions of selected Verilog modules. Each conversion was performed **manually on paper**, following the prompt flow methodology from [conversion-to-TLV](https://github.com/stevehoover/conversion-to-TLV). This exercise helped reinforce my understanding of how TL-Verilog models structure, timing, and control logic differently from traditional RTL.
+
+## ✅ Converted Modules
+
+### 🧱 Simple Modules
+
+| Module        | Description                              | Notes |
+|---------------|------------------------------------------|-------|
+| 2:1 Mux (8-bit)| A basic data selector with 8-bit inputs  | Applied prompt steps for conditional logic & abstraction |
+| 4-bit Counter | Synchronous counter with enable signal    | Explored pipelining and reset handling in TLV             |
+
+### 🔧 Custom Design from Grad Project
+
+| Module     | Description                        | Notes |
+|------------|------------------------------------|-------|
+| SPI Block  | SPI controller for serial I/O      | Manually mapped FSM + shift logic to pipeline-friendly TLV stages |
+
+## 📖 Purpose
+
+- Understand how prompt-based transformations evolve Verilog into TL-Verilog
+- Practice modular decomposition and pipeline stage insertion
+- Prepare for full integration with the `convert.py` toolchain
+- Identify which prompt steps are ambiguous or complex in real-world scenarios
+
+## 📂 Files
+
+Each module folder contains:
+- Original Verilog (.v) file
+- Pen-and-paper translated TL-Verilog (.tlv or `.txt`)
+- Notes or diagrams for key decisions taken during conversion
+
+## 🧠 Based on:
+- `prompts.json` from [conversion-to-TLV](https://github.com/stevehoover/conversion-to-TLV/blob/main/prompts.json)
+- [Makerchip](https://makerchip.com) TL-Verilog learning modules
+- M5 methodology (https://github.com/rweda/M5)
+
+## 📌 Next Steps
+
+- Validate logic using SymbiYosys + EQY
+- Digitize TLV models in Makerchip and link live demos
+- Contribute to prompt refinement for automation
+
+---
+
