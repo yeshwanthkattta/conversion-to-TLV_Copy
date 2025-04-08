@@ -1,14 +1,10 @@
 This repository contains manually converted TL-Verilog versions of selected Verilog modules. Each translation was done by hand on paper, using the structured prompt-based transformation methodology from conversion-to-TLV.
 
- Converted Modules
- Simple Modules
-Module	Description	Notes
-2:1 Mux (8-bit)	A basic data selector with 8-bit inputs	Applied conditional abstraction, followed TLV flow
-4-bit Counter	Synchronous counter with enable signal	Explored pipelining and reset handling
+ 
 🛠️ Custom Design (Graduate Project)
 Module	Description	Notes
 SPI Block	SPI controller for serial I/O	FSM + shift logic manually pipelined using TLV stages
-🎯 Purpose
+ Purpose
 Understand how prompt-based transformations map Verilog into TL-Verilog abstractions
 
 Practice pipeline structuring and FSM modeling
